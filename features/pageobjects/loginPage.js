@@ -69,7 +69,7 @@ loginErrMsg = '//div[text()="The password you’ve entered is incorrect. "]'
 
 async launch(){
 await browser.url('https://www.facebook.com')
-await browser.pause(10000)
+await browser.pause(1000)
 }
 
 async enterLoginEmail(loginEmail) {
@@ -87,8 +87,7 @@ await this.commands.clickWebElement(this.loginBtnLocator);
 await browser.pause(3000);
 }
 async verfErrMsg(){
-await this.commands.isWebElementDisplayed(this.loginErrMsg);
-await browser.pause(3000);
+return await this.commands.isWebElementDisplayed(this.loginErrMsg);
 }
 
 

@@ -1,5 +1,5 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
-// const { expect } = require("chai");
+const { expect } = require("chai");
 const loginPage = require('../pageobjects/loginPage');
 const SecurePage = require('../pageobjects/securePage');
 const uniquePage = require('../pageobjects/uniquePage');
@@ -27,7 +27,8 @@ When(/^I click login$/, async () => {
 
 Then(/^I verify error message$/, async () => {
     const verify = await loginPage.verfErrMsg();
-    expect(verify,'error message does not appear').to.be.true;
+    console.log(verify)
+    expect(verify, '').to.be.true;
 });
 
 

@@ -13,7 +13,7 @@ Feature: Verifications of homepage
     #   | foobar   | barfoo               | Your username is invalid!      |
     
     Given I Browse to facebook
-    # When I enter my login
-    # When I enter my password
-    # When I click login 
-    # Then I verify error message
+    When I enter my login
+    When I enter my password
+    When I click login 
+    Then I verify error message
