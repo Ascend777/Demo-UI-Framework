@@ -25,11 +25,18 @@ When(/^I click login$/, async () => {
     });
 
 
-Then(/^I verify error message$/, async () => {
+When(/^I verify error message$/, async () => {
     const verify = await loginPage.verfErrMsg();
     console.log(verify)
     expect(verify, '').to.be.true;
-});
+
+    });
+
+
+When(/^I verify that the first language is a different color than the rest$/, async () => {
+    await loginPage.verfLanguage();
+    });
+    
 
 
 

@@ -16,4 +16,5 @@ Feature: Verifications of homepage
     When I enter my login
     When I enter my password
     When I click login 
-    Then I verify error message
+    When I verify error message
+    Then I verify that the first language is a different color than the rest

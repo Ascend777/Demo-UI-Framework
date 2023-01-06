@@ -65,35 +65,100 @@ loginEmailLocator = '#email';
 loginPwdLocator = '#pass';
 loginBtnLocator = '<button>';
 loginErrMsg = '//div[text()="The password you’ve entered is incorrect. "]'
-
+languagesLocator = '//ul[contains(@class, "localeSelectorList")]//li'
+langWithLink = '//*[@id="pageFooter"]/ul/li/a' //only the elements with links
 
 async launch(){
+
 await browser.url('https://www.facebook.com')
 await browser.pause(1000)
 }
 
 async enterLoginEmail(loginEmail) {
+
 await this.commands.typeInWebElement(this.loginEmailLocator, 'Jeremy');
-await browser.pause(3000)
+await browser.pause(1000)
 }
 
 async enterLoginPassword(loginPwd) {
+
 await this.commands.typeInWebElement(this.loginPwdLocator, '12345');
-await browser.pause(3000)
+await browser.pause(1000)
 }
 
 async clickLogin(){
+    
 await this.commands.clickWebElement(this.loginBtnLocator);
-await browser.pause(3000);
+await browser.pause(1000);
 }
+
 async verfErrMsg(){
 return await this.commands.isWebElementDisplayed(this.loginErrMsg);
 }
 
+async verfLanguage(){
+//color number - #8a8d91; espanol
 
+    const languages = await this.commands.findWebElements(this.languagesLocator)
+    let languageElement = [];
 
+        for(const language of languages){
+            // let currentLanguage = await element.getText();
+            const languageWithText = await language.getText();
+            console.log(languageWithText)
+            await language.click();
+    //             if(language.isClickable() !== 0){
+    //                 console.log('This is the current language')
+    //             }
+    //             else if(language.isClickable() === 0){
+    //                 console.log('This is not the current language ')
+    //             }
 
+    // const languageWithLinks = await this.commands.findWebElements(this.langWithLink)  
+
+    //     for(const languageLink of languageWithLinks){
+    //         const languageLinkText = await languageLink.getText()
+    //     }
+            
+    //     }   
+        // await language.click()
+        // await browser.pause(3000)
+        // console.log(await language.getText())
+
+        // const languagesWithLink = await this.commands.findWebElements(this.languagesLocator)
+
+        // for(let elementWithLink of languages){
+        //     if(elementWithLink.getText() === currentLanguage){
+        //         console.log('It failed')
+        //     }
+
+        //     else {
+        //         console.log('It passed')
+        //     }
+        // }
+        
+        console.log('&')
+
+            
+    }   
+    // await browser.closeWindow();
+
+    // console.log(languages[0].getText())
+        // for(let language of languages) {
+        // // languageElement = languageElement + " " + await languages.getCSSProperty();
+
+        //     if(await languages[0].getText() === 'English (US)'){
+        //     console.log('Current language')
+        //     }
+
+        //     else{
+        //     console.log('Not the current language')
+        //     }
+        // }
+////*[@id="pageFooter"]/ul/li[2]/a
 }
+}
+
 
 module.exports = new websiteFuncs();
 
