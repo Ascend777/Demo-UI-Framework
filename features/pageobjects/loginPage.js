@@ -1,7 +1,7 @@
 
 
 // const Page = require('./page');
-
+const {assert} = require('chai')
 const Commands = require("../../commands");
 
 
@@ -67,6 +67,7 @@ loginBtnLocator = '<button>';
 loginErrMsg = '//div[text()="The password you’ve entered is incorrect. "]'
 languagesLocator = '//ul[contains(@class, "localeSelectorList")]//li'
 langWithLink = '//*[@id="pageFooter"]/ul/li/a' //only the elements with links
+currentLanguage = '//*[@id="pageFooter"]/ul/li[1]'
 
 async launch(){
 
@@ -97,22 +98,26 @@ return await this.commands.isWebElementDisplayed(this.loginErrMsg);
 }
 
 async verfLanguage(){
-//color number - #8a8d91; espanol
+    const languageArrays = []
+    for(const languagePage of languageArrays){
+    const pageTemp = await this.commands.findWebElement(this.languagePage)
+    console.log(pageTemp);
+    await pageTemp.click();
+    }
+    const firstLanguage = await this.commands.findWebElement(this.currentLanguage)
+    console.log(firstLanguage.getText())
+    console.log(firstLanguage.getTagName('a'))
+    assert.isTrue(firstLanguage.getTagName('a') != 'a' )
 
-    const languages = await this.commands.findWebElements(this.languagesLocator)
+    const languages = await this.commands.findWebElements(this.langWithLink)
     let languageElement = [];
 
         for(const language of languages){
-            // let currentLanguage = await element.getText();
-            const languageWithText = await language.getText();
+            let languageWithText = await language.getText();
             console.log(languageWithText)
-            await language.click();
-    //             if(language.isClickable() !== 0){
-    //                 console.log('This is the current language')
-    //             }
-    //             else if(language.isClickable() === 0){
-    //                 console.log('This is not the current language ')
-    //             }
+            assert.isTrue(language.getTagName('a') != null)
+            console.log(language.getTagName('a'))
+
 
     // const languageWithLinks = await this.commands.findWebElements(this.langWithLink)  
 
@@ -137,8 +142,6 @@ async verfLanguage(){
         //     }
         // }
         
-        console.log('&')
-
             
     }   
     // await browser.closeWindow();

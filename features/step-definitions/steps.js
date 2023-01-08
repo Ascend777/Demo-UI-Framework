@@ -33,7 +33,7 @@ When(/^I verify error message$/, async () => {
     });
 
 
-When(/^I verify that the first language is a different color than the rest$/, async () => {
+Then(/^I verify that the first language does not include a link$/, async () => {
     await loginPage.verfLanguage();
     });
     
